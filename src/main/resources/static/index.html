@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>SimpleWebDataEntry</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <style>
+            table { border-collapse: collapse; }
+            thead { text-align: left; }
+            thead { background-color: lightgreen; }
+            th, td { padding: 0.25em 0.4em; border: 1px solid #dfdfdf; }
+            tr:nth-child(even) { background-color: #efefef; }
+        </style>
+    </head>
+    <body>
+        <div class="container"></div>
+
+        <script>
+            var offset = 0;
+
+            // Accepts the first object from the data and
+            // returns a string of HTML from its keys
+            function buildHeadings(obj) {
+                const keys = Object.keys(obj);
+                return keys.map(key => `<th>${key}</th>`).join('');
+            }
+
+            // Accepts a value data and
+            // returns an HTML table cell
+            function buildCell(cell) {
+                return `<td>${cell}</td>`;
+            }
+
+            // Accepts an object and
+            // returns a string of row HTML by mapping
+            // over the object values and, for each, calling
+            // `buildCell`
+            function buildRow(obj) {
+                const values = Object.values(obj);
+                return `<tr>${values.map(buildCell).join('')}</tr>`;
+            }
+
+            // Accepts the data and
+            // returns a string of row HTML calling
+            // `buildRow` for each object in the dataset
+            function buildRows(data) {
+                return data.map(buildRow).join('');
+            }
+
+            // `buildTable` puts it all together and returns
+            // the final table markup as an HTML string
+            function buildTable(data) {
+                return `
+                    <table>
+                    <thead>${buildHeadings(data[0])}</thead>
+                    <tbody>${buildRows(data)}</tbody>
+                    </table>
+                `;
+            }
+
+            const container = document.querySelector('.container');
+
+            $.get("/simple-web-data-entry/data", {offset: offset}, function(data) {
+                const jsonObject = JSON.parse(data);
+                const table = buildTable(jsonObject['results']);
+                container.innerHTML = table;
+            });
+
+        </script>
+    </body>
+</html>

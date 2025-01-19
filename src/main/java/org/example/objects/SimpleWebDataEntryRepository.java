@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SimpleWebDataEntryRepository extends JpaRepository<SimpleWebDataEntryEntity, Long> {
-    Page<SimpleWebDataEntryEntity> findData(Pageable pageable);
+
 }

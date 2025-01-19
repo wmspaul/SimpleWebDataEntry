@@ -18,7 +18,7 @@ public class SimpleWebDataEntryRepositoryService {
 
     public List<SimpleWebDataEntryEntity> findData(Integer limit, Integer offset) {
         Pageable pageable = PageRequest.of(offset, limit);
-        Page<SimpleWebDataEntryEntity> page = repository.findData(pageable);
+        Page<SimpleWebDataEntryEntity> page = repository.findAll(pageable);
         return page.getContent();
     }
 

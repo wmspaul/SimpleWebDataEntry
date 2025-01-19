@@ -6,12 +6,10 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("/simple-web-data-entry")
+@RestController
+@RequestMapping("/simple-web-data-entry")
 public class SimpleWebDataEntryRestCalls {
     @Autowired
     private SimpleWebDataEntryRestService restService;
@@ -22,8 +20,8 @@ public class SimpleWebDataEntryRestCalls {
      * @return A JSON Object with the next 100 records according to offset
      */
     @GetMapping("/data")
-    public ResponseEntity<JSONObject> getAllData(HttpServletRequest request, @RequestParam("offset") int offset) {
-        return new ResponseEntity<>(restService.getRecords(100, offset), HttpStatus.OK);
+    public ResponseEntity<String> getAllData(HttpServletRequest request, @RequestParam("offset") int offset) {
+        return new ResponseEntity<>(restService.getRecords(100, offset).toString(), HttpStatus.OK);
     }
 
     /**
@@ -31,14 +29,14 @@ public class SimpleWebDataEntryRestCalls {
      * @return
      */
     @PostMapping("/data")
-    public ResponseEntity<JSONObject> dataEntry(
+    public ResponseEntity<String> dataEntry(
             HttpServletRequest req,
             @RequestParam("name") String name,
             @RequestParam("age") Integer age,
             @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "hometown", required = false) String hometown
     ) {
-        return new ResponseEntity<>(restService.createNewRecord(name, age, title, hometown), HttpStatus.OK);
+        return new ResponseEntity<>(restService.createNewRecord(name, age, title, hometown).toString(), HttpStatus.OK);
     }
 
 }

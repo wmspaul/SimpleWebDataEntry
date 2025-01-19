@@ -2,10 +2,14 @@ package org.example.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.NonNull;
+import org.example.objects.SimpleWebDataEntryEntity;
 import org.example.objects.SimpleWebDataEntryServiceException;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SimpleWebDataEntryRestService {
@@ -15,11 +19,9 @@ public class SimpleWebDataEntryRestService {
     public JSONObject getRecords(int numberOfRecords, int offset) {
         ObjectMapper om = new ObjectMapper();
         try {
+            List<SimpleWebDataEntryEntity> results = repositoryService.findData(numberOfRecords, offset);
             JSONObject response = new JSONObject();
-            response.append("results", om.writeValueAsString(
-                    repositoryService.findData(numberOfRecords, offset)
-            ));
-
+            response.append("results", new JSONArray(om.writeValueAsString(results)));
             return response;
         }
         catch (Exception e) {
