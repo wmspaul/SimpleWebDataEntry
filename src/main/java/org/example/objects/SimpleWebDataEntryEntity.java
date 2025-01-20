@@ -1,5 +1,6 @@
 package org.example.objects;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,27 +12,27 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonInclude
 public class SimpleWebDataEntryEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false)
-    @JsonProperty("id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty
     private Long id;
 
     @Basic(optional = false)
     @Column(nullable = false)
-    @JsonProperty("name")
+    @JsonProperty
     private String name;
 
     @Basic(optional = false)
     @Column(nullable = false)
-    @JsonProperty("age")
+    @JsonProperty
     private Integer age;
 
-    @JsonProperty("title")
+    @JsonProperty
     private String title;
 
-    @JsonProperty("hometown")
+    @JsonProperty
     private String hometown;
 
     @Override

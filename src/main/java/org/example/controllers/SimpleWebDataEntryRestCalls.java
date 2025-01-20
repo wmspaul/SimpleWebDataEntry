@@ -2,7 +2,6 @@ package org.example.controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.example.services.SimpleWebDataEntryRestService;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +16,11 @@ public class SimpleWebDataEntryRestCalls {
     /**
      * This method will return 100 records according to an offset provided
      * @param offset Where to start in the data entry records
-     * @return A JSON Object with the next 100 records according to offset
+     * @return A JSON Object with the next 10 records according to offset
      */
     @GetMapping("/data")
     public ResponseEntity<String> getAllData(HttpServletRequest request, @RequestParam("offset") int offset) {
-        return new ResponseEntity<>(restService.getRecords(100, offset).toString(), HttpStatus.OK);
+        return new ResponseEntity<>(restService.getRecords(10, offset), HttpStatus.OK);
     }
 
     /**
@@ -36,7 +35,7 @@ public class SimpleWebDataEntryRestCalls {
             @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "hometown", required = false) String hometown
     ) {
-        return new ResponseEntity<>(restService.createNewRecord(name, age, title, hometown).toString(), HttpStatus.OK);
+        return new ResponseEntity<>(restService.createNewRecord(name, age, title, hometown), HttpStatus.OK);
     }
 
 }

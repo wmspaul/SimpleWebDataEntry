@@ -19,7 +19,7 @@ public class SimpleWebDataEntryRepositoryService {
     public List<SimpleWebDataEntryEntity> findData(Integer limit, Integer offset) {
         Pageable pageable = PageRequest.of(offset, limit);
         Page<SimpleWebDataEntryEntity> page = repository.findAll(pageable);
-        return page.getContent();
+        return page.toList();
     }
 
     public void addData(@NonNull String name, @NonNull Integer age, String title, String hometown) {
