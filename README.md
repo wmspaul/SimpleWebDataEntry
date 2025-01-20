@@ -37,7 +37,7 @@ In order to have the application working as expected, follow the given steps.
 2. Open the project in IntelliJ
 3. Install the Lombok Plugin
    1. Settings > Plugins > Search for Lombok > Install > Enable
-      2. NOTE - IntelliJ may need to be restarted
+   2. NOTE - IntelliJ may need to be restarted
 4. If the project did not have a Run application configuration, then you will set up an edit configuration
    1. Top right of IntelliJ > Click Drop Down > Click Edit Configurations
    2. Add new application edit configuration > specify Main class under org.example packages as the main class
