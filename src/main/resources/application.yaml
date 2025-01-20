@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: SimpleWebDataEntry
+  flyway:
+    locations: classpath:flyway
+    baseline-on-migrate: true
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        query:
+          mutation_strategy:
+            persistent:
+              create_tables: false
+              drop_tables: false
+            global_temporary:
+              create_tables: false
+              drop_tables: false
+    hibernate:
+      ddl-auto: none
+      dialect: org.hibernate.community.dialect.SQLiteDialect
+
+hibernate:
+  show_sql: false
+  hbm2ddl:
+    auto: none
+
+driverClassName: org.sqlite.JDBC
+url: jdbc:sqlite:DataEntry.db
+username: admin
+password: password

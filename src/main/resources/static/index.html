@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>SimpleWebDataEntry</title>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <style></style>
+    </head>
+
+    <body>
+        <div class="table-data-entry-container" style="visibility: hidden;"></div>
+        <div class="form-data-entry-container" style="visibility: visible;">
+            <form class="form-data-entry">
+                <h2>Simple Web Data Entry</h2>
+                <div class="field" tabindex="1">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" class="form-control-material" autocomplete="off" placeholder="e.g. John Doe" required>
+                </div>
+                <div class="field" tabindex="2">
+                    <label for="age">Your Age</label>
+                    <input type="text" id="age" name="age" class="form-control-material" autocomplete="off" placeholder="e.g. 21" required>
+                </div>
+                <div class="field" tabindex="3">
+                    <label for="title">Your Title</label>
+                    <input type="text" id="title" name="title" class="form-control-material" autocomplete="off" placeholder="e.g. Mrs.">
+                </div>
+                <div class="field" tabindex="4">
+                    <label for="hometown">Your Hometown</label>
+                    <input type="text" id="hometown" name="hometown" class="form-control-material" autocomplete="off" placeholder="e.g. Dallas, Texas">
+                </div>
+                <button class="btn btn-primary btn-ghost" type="submit" value="Submit">Submit Data</button>
+            </form>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

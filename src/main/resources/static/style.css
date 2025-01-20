@@ -1,0 +1,140 @@
+body {
+    background-color: #91ced4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+body * {
+    box-sizing: border-box;
+}
+
+.header {
+    background-color: #327a81;
+    color: white;
+    font-size: 1.5em;
+    padding: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.table-data-entry {
+    border: 1px inset #327a81;
+    border-radius: 10px;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+    max-width: calc(100% - 2em);
+    margin: 1em auto;
+    overflow: hidden;
+    width: 800px;
+}
+
+table {
+    width: 100%;
+}
+
+table td,
+table th {
+    color: #2b686e;
+    padding: 10px;
+}
+
+table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+table th {
+    background-color: #daeff1;
+    font-weight: bold;
+}
+
+table tr:nth-child(2n) {
+    background-color: white;
+}
+
+table tr:nth-child(2n+1) {
+    background-color: #edf7f8;
+}
+
+table tr:hover {
+    border: 2px solid black;
+}
+
+tbody tr:hover {
+    opacity: .5;
+}
+
+.form-data-entry-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 16px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    width: 400px;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+form div, form label, form input, form textarea {
+    width: 100%;
+}
+
+.field {
+    margin: 8px 0;
+}
+
+label, input {
+    padding: 8px;
+}
+
+label, [placeholder], h2 {
+    color: #555;
+}
+
+label i {
+    margin: 0 10px 0 0;
+}
+
+.field:focus-within label {
+    color: #000;
+    font-weight: bold;
+}
+
+input {
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 8px 6px -6px #555;
+}
+
+input:focus {
+    background: white;
+    box-shadow: none;
+}
+
+button {
+    background: #327a81;
+    margin: 16px 0 50px 0;
+    padding: 8px 16px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 8px 6px -6px #555;
+}
+
+button:hover {
+    font-weight: bold;
+    box-shadow: none;
+}
